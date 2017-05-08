@@ -1,6 +1,11 @@
 # Logger
 Simple logger impl for Android
 
+## Download
+```
+git clone https://github.com/Tornaco/Logger
+```
+
 ### Usage
 ```java
  // Init
