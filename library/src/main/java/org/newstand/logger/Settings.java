@@ -11,13 +11,11 @@ public class Settings {
     private Logger.LogLevel logLevel;
     private LogAdapter logAdapter;
     private String tag;
-    private boolean bugReportEnabled;
 
-    private Settings(Logger.LogLevel logLevel, LogAdapter logAdapter, String tag, boolean bugReportEnabled) {
+    private Settings(Logger.LogLevel logLevel, LogAdapter logAdapter, String tag) {
         this.logLevel = logLevel;
         this.logAdapter = logAdapter;
         this.tag = tag;
-        this.bugReportEnabled = bugReportEnabled;
     }
 
     public static SettingsBuilder builder() {
@@ -36,16 +34,11 @@ public class Settings {
         return this.tag;
     }
 
-    public boolean isBugReportEnabled() {
-        return bugReportEnabled;
-    }
-
     public static class SettingsBuilder {
 
         private Logger.LogLevel logLevel = Logger.LogLevel.WARN;
         private LogAdapter logAdapter = null;
         private String tag = "Logger";
-        private boolean bugReportEnabled = false;
 
         SettingsBuilder() {
         }
@@ -65,14 +58,9 @@ public class Settings {
             return this;
         }
 
-        public SettingsBuilder bugReportEnabled(boolean bugReportEnabled) {
-            this.bugReportEnabled = bugReportEnabled;
-            return this;
-        }
-
         public Settings build() {
             if (logAdapter == null) logAdapter = new AndroidLogAdapter();
-            return new Settings(logLevel, logAdapter, tag, bugReportEnabled);
+            return new Settings(logLevel, logAdapter, tag);
         }
     }
 }

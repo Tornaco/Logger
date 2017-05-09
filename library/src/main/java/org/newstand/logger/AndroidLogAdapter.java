@@ -8,7 +8,7 @@ import android.util.Log;
  * All right reserved.
  */
 
-class AndroidLogAdapter implements LogAdapter {
+public class AndroidLogAdapter implements LogAdapter {
     @Override
     public void d(String tag, String message) {
         Log.d(tag, message);

@@ -1,7 +1,5 @@
 package org.newstand.logger;
 
-import com.bugsnag.android.Bugsnag;
-
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -14,8 +12,6 @@ import java.net.UnknownHostException;
  */
 
 public class Logger {
-
-    private static boolean bugReportEnabled;
 
     public static enum LogLevel {
         ALL,
@@ -32,7 +28,6 @@ public class Logger {
     public static void config(Settings settings) {
         printer = new LogPrinter();
         printer.set(settings);
-        bugReportEnabled = settings.isBugReportEnabled();
     }
 
     public static void startRedirection(PrintStream ps) {
@@ -57,7 +52,6 @@ public class Logger {
 
     public static void e(Throwable throwable, String message, Object... args) {
         printer.e(throwable, message, args);
-        if (bugReportEnabled) Bugsnag.notify(throwable);
     }
 
     public static void i(String message, Object... args) {

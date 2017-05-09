@@ -36,8 +36,6 @@ public class FastPrintWriter extends PrintWriter {
         }
     }
 
-    ;
-
     private final int mBufferLen;
     private final char[] mText;
     private int mPos;
