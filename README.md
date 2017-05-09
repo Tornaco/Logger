@@ -6,11 +6,13 @@ Simple logger impl for Android
 git clone https://github.com/Tornaco/Logger
 ```
 
+### Gradle
+[![](https://jitpack.io/v/Tornaco/Logger.svg)](https://jitpack.io/#Tornaco/Logger)
+
 ### Usage
 ```java
  // Init
  Logger.config(Settings.builder()
-                .bugReportEnabled(false)
                 .logAdapter(new AndroidLogAdapter())
                 .logLevel(Logger.LogLevel.WARN)
                 .build());
