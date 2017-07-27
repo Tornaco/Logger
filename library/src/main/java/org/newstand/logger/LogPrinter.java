@@ -23,6 +23,10 @@ class LogPrinter implements Printer {
 
     private PrintStream directStream;
 
+    LogPrinter() {
+        set(Settings.DEFAULT_SETTINGS);
+    }
+
     @Override
     public void set(Settings settings) {
         tag = settings.getTag();

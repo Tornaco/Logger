@@ -23,10 +23,9 @@ public class Logger {
         NONE
     }
 
-    private static Printer printer;
+    private static Printer printer = new LogPrinter();
 
     public static void config(Settings settings) {
-        printer = new LogPrinter();
         printer.set(settings);
     }
 

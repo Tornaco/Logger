@@ -8,6 +8,13 @@ package org.newstand.logger;
 
 public class Settings {
 
+    public static final Settings DEFAULT_SETTINGS = Settings
+            .builder()
+            .logAdapter(new AndroidLogAdapter())
+            .logLevel(Logger.LogLevel.ALL)
+            .tag("Logger")
+            .build();
+
     private Logger.LogLevel logLevel;
     private LogAdapter logAdapter;
     private String tag;
