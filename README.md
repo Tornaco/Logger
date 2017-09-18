@@ -9,6 +9,10 @@ git clone https://github.com/Tornaco/Logger
 ### Gradle
 [![](https://jitpack.io/v/Tornaco/Logger.svg)](https://jitpack.io/#Tornaco/Logger)
 
+```gradle
+compile 'com.github.Tornaco:Logger:1.1.2'
+```
+
 ### Usage
 ```java
  // Init
