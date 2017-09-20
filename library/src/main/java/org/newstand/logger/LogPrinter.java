@@ -42,7 +42,10 @@ class LogPrinter implements Printer {
     @Override
     public void d(String message, Object... args) {
         if (level.ordinal() <= Logger.LogLevel.DEBUG.ordinal()) {
-            String msg = String.format(message, args);
+            String msg =
+                    emptyArgs(args)
+                            ? message
+                            : String.format(message, args);
             adapter.d(tag, msg);
             exe.execute(new Directer(tag, msg));
         }
@@ -59,7 +62,10 @@ class LogPrinter implements Printer {
     @Override
     public void e(String message, Object... args) {
         if (level.ordinal() <= Logger.LogLevel.ERROR.ordinal()) {
-            String msg = String.format(message, args);
+            String msg =
+                    emptyArgs(args)
+                            ? message
+                            : String.format(message, args);
             adapter.e(tag, msg);
             exe.execute(new Directer(tag, msg));
         }
@@ -68,25 +74,35 @@ class LogPrinter implements Printer {
     @Override
     public void e(Throwable throwable, String message, Object... args) {
         if (level.ordinal() <= Logger.LogLevel.ERROR.ordinal()) {
-            String err = String.format(message, args) + "\n" + getStackTraceString(throwable);
-            adapter.e(tag, err);
-            exe.execute(new Directer(tag, err));
+            String msg =
+                    emptyArgs(args)
+                            ? message
+                            : String.format(message, args)
+                            + "\n" + getStackTraceString(throwable);
+            adapter.e(tag, msg);
+            exe.execute(new Directer(tag, msg));
         }
     }
 
     @Override
     public void w(String message, Object... args) {
         if (level.ordinal() <= Logger.LogLevel.WARN.ordinal()) {
-            String wn = String.format(message, args);
-            adapter.w(tag, wn);
-            exe.execute(new Directer(tag, wn));
+            String msg =
+                    emptyArgs(args)
+                            ? message
+                            : String.format(message, args);
+            adapter.w(tag, msg);
+            exe.execute(new Directer(tag, msg));
         }
     }
 
     @Override
     public void i(String message, Object... args) {
         if (level.ordinal() <= Logger.LogLevel.INFO.ordinal()) {
-            String info = String.format(message, args);
+            String info =
+                    emptyArgs(args)
+                            ? message
+                            : String.format(message, args);
             adapter.i(tag, info);
             exe.execute(new Directer(tag, info));
         }
@@ -95,7 +111,10 @@ class LogPrinter implements Printer {
     @Override
     public void v(String message, Object... args) {
         if (level.ordinal() <= Logger.LogLevel.VERBOSE.ordinal()) {
-            String ver = String.format(message, args);
+            String ver =
+                    emptyArgs(args)
+                            ? message
+                            : String.format(message, args);
             adapter.v(tag, ver);
             exe.execute(new Directer(tag, ver));
         }
@@ -104,7 +123,10 @@ class LogPrinter implements Printer {
     @Override
     public void wtf(String message, Object... args) {
         if (level.ordinal() <= Logger.LogLevel.WARN.ordinal()) {
-            String wf = String.format(message, args);
+            String wf =
+                    emptyArgs(args)
+                            ? message
+                            : String.format(message, args);
             adapter.wtf(tag, wf);
             exe.execute(new Directer(tag, wf));
         }
@@ -139,6 +161,10 @@ class LogPrinter implements Printer {
                 directStream.flush();
             }
         }
+    }
+
+    private static boolean emptyArgs(Object... args) {
+        return args == null || args.length == 0;
     }
 
     private static String getStackTraceString(Throwable throwable) {

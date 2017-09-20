@@ -13,7 +13,7 @@ import java.net.UnknownHostException;
 
 public class Logger {
 
-    public static enum LogLevel {
+    public enum LogLevel {
         ALL,
         VERBOSE,
         INFO,

@@ -12,14 +12,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(org.newstand.logger.R.layout.activity_main);
-
         Logger.config(Settings.builder()
                 .logAdapter(new AndroidLogAdapter())
-                .logLevel(Logger.LogLevel.WARN)
+                .logLevel(Logger.LogLevel.VERBOSE)
                 .build());
 
         Logger.d("Debug info");
-        Logger.d("Hello I am %s, I am %d years old.", "Nick", "24");
+        Logger.d("Hello I am %s, I am %d years old.", "Nick", 24);
+        Logger.i("Hello I am %s %i %s FF *()#@$^%^~");
     }
 }
