@@ -18,9 +18,10 @@ compile 'com.github.Tornaco:Logger:1.1.2'
  // Init
  Logger.config(Settings.builder()
                 .logAdapter(new AndroidLogAdapter())
-                .logLevel(Logger.LogLevel.WARN)
+                .logLevel(Logger.LogLevel.INFO)
                 .build());
 
- Logger.d("Debug info");
- Logger.d("Hello I am %s, I am %d years old.", "Nick", "24");
+Logger.d("Debug info");
+Logger.d("Hello I am %s, I am %d years old.", "Nick", 24);
+Logger.i("Hello I am %s %i %s FF *()#@$^%^~");
 ```
